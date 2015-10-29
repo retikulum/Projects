@@ -4,7 +4,7 @@ import urllib2
 print "-------------\n YOUTUBE MUSIC OPENER\n-------------"
 user_want=raw_input("What do you want me to play.\n")
 user_want=list(user_want)
-#if there are spaces in string, this part change it
+#Have to remove spaces because it gives error when program wants to view source code.
 for char in user_want:
     if char==" ":
         user_want.remove(char)
@@ -15,7 +15,7 @@ search_link=youtube_link+user_want
 request=urllib2.Request(search_link)
 response=urllib2.urlopen(request)
 ans=response.readlines()
-#find wacth?v= because program open first video in search
+#find wacth?v= in source code then program open first video in search page
 for item in ans:
         if "watch?v=" in item:
             a= item[item.index("watch?v="):]
